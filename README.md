@@ -29,7 +29,7 @@ Una Pokédex web responsiva que consume datos de la PokéAPI. Construida con Jav
 - html2canvas (card export)
 - PokéAPI v2
 
-## What I Learned / Lo que aprendí
+## Key Technical Highlights / Aspectos técnicos destacados
 
 - Consuming RESTful APIs with fetch and handling JSON responses / Consumir APIs REST con fetch y manejar respuestas JSON
 - Parallel HTTP requests with Promise.all for performance / Peticiones HTTP paralelas con Promise.all para rendimiento
