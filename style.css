@@ -1,0 +1,336 @@
+/* ── VARIABLES & RESET ── */
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a2e;
+  --card: #16213e;
+  --accent: #e63946;
+  --text: #eaeaea;
+  --muted: #888;
+  --radius: 12px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+header {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+  border-bottom: 1px solid #222;
+}
+
+header img {
+  width: 160px;
+  margin-bottom: 0.75rem;
+  filter: brightness(0) invert(1);
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+header p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+/* ── CONTROLS ── */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+  flex-wrap: wrap;
+}
+
+.controls input,
+.controls select {
+  background: var(--surface);
+  border: 1px solid #333;
+  color: var(--text);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s;
+  min-width: 220px;
+}
+
+.controls input:focus,
+.controls select:focus {
+  border-color: var(--accent);
+}
+
+.controls select option {
+  background: var(--surface);
+}
+
+/* ── SPINNER ── */
+.spinner-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  gap: 1rem;
+  color: var(--muted);
+}
+
+.pokeball-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #333;
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ── GRID ── */
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.25rem;
+  padding: 1rem 2rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.25rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #222;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(230, 57, 70, 0.2);
+}
+
+.card img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.card .pokedex-num {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+.card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0.25rem 0 0.5rem;
+  color: var(--text)
+}
+
+/* ── TYPE BADGES ── */
+.type-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 2px;
+  color: #fff;
+}
+
+/* type colors */
+.type-fire     { background: #f08030; }
+.type-water    { background: #6890f0; }
+.type-grass    { background: #78c850; }
+.type-electric { background: #f8d030; color: #333; }
+.type-ice      { background: #98d8d8; color: #333; }
+.type-fighting { background: #c03028; }
+.type-poison   { background: #a040a0; }
+.type-ground   { background: #e0c068; color: #333; }
+.type-flying   { background: #a890f0; }
+.type-psychic  { background: #f85888; }
+.type-bug      { background: #a8b820; }
+.type-rock     { background: #b8a038; }
+.type-ghost    { background: #705898; }
+.type-dragon   { background: #7038f8; }
+.type-dark     { background: #705848; }
+.type-steel    { background: #b8b8d0; color: #333; }
+.type-fairy    { background: #ee99ac; color: #333; }
+.type-normal   { background: #a8a878; color: #333; }
+
+/* ── STATS ── */
+.stats {
+  margin-top: 0.75rem;
+  text-align: left;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.8rem;
+}
+
+.stat-label {
+  width: 70px;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.stat-bar-bg {
+  flex: 1;
+  background: #333;
+  border-radius: 10px;
+  height: 6px;
+  overflow: hidden;
+}
+
+.stat-bar {
+  height: 100%;
+  border-radius: 10px;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+
+.stat-value {
+  width: 28px;
+  text-align: right;
+  color: var(--text);
+}
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-box {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 420px;
+  width: 90%;
+  position: relative;
+  border: 1px solid #333;
+}
+
+.modal-box img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 1rem;
+  image-rendering: pixelated;
+}
+
+.modal-box h2 {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#closeModal {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+#closeModal:hover {
+  color: var(--accent);
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-top: 1px solid #222;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+/* ── MODAL EXTRAS ── */
+.pokedex-description {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.download-btn {
+  display: block;
+  width: 100%;
+  margin-top: 1.25rem;
+  padding: 0.65rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s;
+}
+
+.download-btn:hover {
+  opacity: 0.85;
+}
